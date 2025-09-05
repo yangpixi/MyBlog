@@ -1,15 +1,37 @@
 <script>
 import router from '@/router';
+import axios from 'axios';
+import { ElMessage } from 'element-plus';
 export default {
     data() {
         return {
             username: '',
             password: '',
+            isLogin: '',
+            statusCode: '',
         }
     },
     methods: {
-        login() {
-            router.push('/')
+        async doLogin() {
+            try {
+                const response = await axios.post('/api/auth/login', {
+                    username: this.username,
+                    password: this.password,
+                }, {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+                this.statusCode = response.data.status;
+                if(this.statusCode === 200) {
+                    this.isLogin = response.data.success;
+                    this.$router.push('/');
+                }else {
+                    alert('登录失败，请检查用户名或密码。')
+                }
+            }catch(e) {
+                alert(e);
+            }
         },
     }
 }
@@ -41,7 +63,7 @@ export default {
                     </el-input>
                 </div>
                 <div>
-                    <el-button type="success" style="margin: 40px auto; display: block;" size="large" @click="login" round plain>登录</el-button>
+                    <el-button type="success" style="margin: 40px auto; display: block; font-size: 1rem;" size="large" @click="doLogin" round plain>登录</el-button>
                 </div>
             </div>
         </div>
