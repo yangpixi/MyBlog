@@ -2,6 +2,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import axios from 'axios'
+
+axios.defaults.withCredentials = true;
+axios.defaults.baseURL = 'http://localhost:8080'
 
 const app = createApp(App)
 
