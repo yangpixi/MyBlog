@@ -1,5 +1,4 @@
 <script>
-import router from '@/router';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
 export default {
@@ -25,6 +24,7 @@ export default {
                 this.statusCode = response.data.status;
                 if(this.statusCode === 200) {
                     this.isLogin = response.data.success;
+                    ElMessage.success("登录成功!")
                     this.$router.push('/');
                 }else {
                     alert('登录失败，请检查用户名或密码。')
@@ -85,6 +85,19 @@ export default {
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 20px;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    };
+    to {
+        opacity: 100%;
+    }
+}
+
+* {
+    animation: fade-in 1s ease;
 }
 
 </style>
