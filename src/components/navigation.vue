@@ -24,10 +24,10 @@ export default {
             <el-col :span="6" :offset="7">
                 <ul style="display: flex;">
                     <li>
-                        <a href="123">首页</a>
+                        <RouterLink to="/">首页</RouterLink>
                     </li>
                     <li>
-                        <a href="123">文章</a>
+                        <RouterLink to="/article">文章</RouterLink>
                     </li>
                     <li>
                         <a href="123">记录</a>
@@ -60,7 +60,7 @@ nav {
     top: 0;
     margin: 0;
     padding: 5px;
-    z-index: 3000;
+    z-index: 1000;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);

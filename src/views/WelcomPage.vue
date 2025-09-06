@@ -6,7 +6,6 @@ import Navigation from '@/components/navigation.vue';
 
 <template>
     <Navigation></Navigation>
-
     <div class="background">
         <div class="content">
             <div>
@@ -42,11 +41,13 @@ import Navigation from '@/components/navigation.vue';
             <div class="decoration">
                 <img src="/src/assest/decoration.jpg" style="position: absolute; z-index: 2; 
                     width: 400px; height: 600px; top: 15vh; left: 55vw; border-radius: 30px;
-                    box-shadow: 0 0 10px black;"/>
+                    box-shadow: 0 0 10px black; display: block;"/>
+            </div>
+            <div class="continue" style="position: absolute; z-index: 2; top: 95vh; left: 49vw;">
+                <p style="color: gray; text-shadow: 0 0 5px black;">继续阅读</p>
             </div>
         </div>
     </div>
-
 </template>
 
 <style scoped>
@@ -62,6 +63,7 @@ import Navigation from '@/components/navigation.vue';
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    
 }
 
 .background::before {
@@ -76,8 +78,8 @@ import Navigation from '@/components/navigation.vue';
     background-position: center;
     background-color: rgba(0, 0, 0, 0.3);
     filter: blur(5px);
+    transform: scale(1.1);
     z-index: 1;
-    /* background-attachment: fixed; */
 }
 
 .content {
@@ -99,6 +101,7 @@ import Navigation from '@/components/navigation.vue';
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    animation: fade-in 1s ease;
 }
 
 .introduce p {
@@ -124,6 +127,21 @@ import Navigation from '@/components/navigation.vue';
     left: -42vw;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    animation: fade-in 1s ease;
 }
+
+.decoration img {
+    animation-delay: 1s;
+    animation: fade-in 1s ease;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    };
+    to {
+        opacity: 100%;
+    }
+}                              
 
 </style>
