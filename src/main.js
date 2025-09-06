@@ -6,6 +6,8 @@ import axios from 'axios'
 import 'element-plus/dist/index.css';
 import ElementPlus from 'element-plus'
 import nav from '@/components/navigation.vue'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://localhost:8080'
@@ -15,6 +17,8 @@ const app = createApp(App)
 app.use(ElementPlus, {
     zIndex: 3000,
 })
+
+app.use(mavonEditor)
 
 app.use(router)
 
