@@ -78,10 +78,10 @@ ul a:hover {
 }
 
 ul a {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
     border-radius: 15px;
     color: rgb(0, 0, 0);
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     text-decoration: none;
     padding-top: 10px;
     padding-bottom: 10px;
