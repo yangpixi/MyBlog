@@ -69,10 +69,10 @@ import Navigation from '@/components/navigation.vue';
 .background::before {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    width: calc(100% + 10px);
-    height: calc(100% + 10px);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     background-image: url('/src/assest/back.jpg');
     background-size: cover;
     background-position: center;
@@ -127,7 +127,7 @@ import Navigation from '@/components/navigation.vue';
     left: -42vw;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-    animation: fade-in 1s ease;
+    animation: fade-in 1s ease-in-out;
 }
 
 .decoration img {

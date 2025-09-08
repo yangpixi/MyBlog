@@ -17,9 +17,7 @@ const app = createApp(App)
 app.use(ElementPlus, {
     zIndex: 3000,
 })
-
 app.use(mavonEditor)
-
 app.use(router)
 
 app.component('Navigation', nav)

@@ -14,7 +14,7 @@ const router = createRouter({
       component: () => import('@/views/LoginView.vue')
     },
     {
-      path: '/article/editor',
+      path: '/editor',
       name: 'editor',
       component: () => import('@/views/EditorPage.vue')
     },

@@ -15,8 +15,6 @@ export default {
     </div>
 </template>
 
-
-
 <style scoped>
 .mavonEditor {
     width: 100%;

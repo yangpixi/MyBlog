@@ -7,7 +7,7 @@ export default {
         }
     },
     methods: {
-
+        
     }
 
 }
@@ -117,7 +117,7 @@ body {
 @keyframes anime {
     from {
         opacity: 0;
-        transform: translateY(5px);
+        transform: translateY(10px);
     };
     to {
         opacity: 0.3;
