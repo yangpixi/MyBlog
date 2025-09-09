@@ -27,6 +27,7 @@ const router = createRouter({
         },
         {
           path: 'allArticles',
+          component: () => import('@/components/allArticlesPart.vue')
         },
         {
           path: 'addArticles',
