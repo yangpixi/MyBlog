@@ -69,7 +69,5 @@ export default {
 </template>
 
 <style scoped>
-.editor {
-    /* height: 100%; */
-}
+
 </style>
