@@ -14,9 +14,29 @@ const router = createRouter({
       component: () => import('@/views/LoginView.vue')
     },
     {
-      path: '/editor',
-      name: 'editor',
-      component: () => import('@/views/EditorPage.vue')
+      path: '/manager',
+      name: 'manager',
+      component: () => import('@/views/ManagerPage.vue'),
+      children: [
+        {
+          path: 'changeName',
+          component: () => import('@/components/changeNamePart.vue')
+        },
+        {
+          path: 'changePassword',
+        },
+        {
+          path: 'allArticles',
+        },
+        {
+          path: 'addArticles',
+          component: () => import('@/components/addArticlesPart.vue')
+        },
+        {
+          path: 'logout',
+          component: () => import('@/components/logoutPart.vue')
+        }
+      ]
     },
     {
       path: '/article',

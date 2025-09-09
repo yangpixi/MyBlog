@@ -1,7 +1,7 @@
 <script>
 import { checkIsLogin } from '@/js/utils';
 import axios from 'axios';
-import { ElMessage, localeContextKey } from 'element-plus';
+import { ElMessage } from 'element-plus';
 
 export default {
     data() {
@@ -17,17 +17,25 @@ export default {
             this.$router.push('/login');
            }
         },
-        toEditor() {
+        toManager() {
             if (this.isLogin === true) {
-                this.$router.push('/editor');
+                this.$router.push('/manager');
             } else {
                 ElMessage.warning("请登录");
             }
         },
         async logout() {
-            const res = await axios.get('/logout');
-            this.isLogin = false;
-            ElMessage.primary('成功退出账号');
+            try {
+                const res = await axios.post('/api/logout');
+                ElMessage({
+                    message: '已退出登录',
+                    duration: 1000,
+                    type: 'success'
+                });
+                this.isLogin = false;
+            }catch(err) {
+                ElMessage.warning('退出登录出现问题');
+            }
         },
     },
     mounted() {
@@ -42,7 +50,7 @@ export default {
     <nav>
         <el-row style="display: flex; align-items: center;">
             <el-col :span="1" :offset="1">
-                <el-button circle @click="toEditor"><img src="/src/assest/favicon.ico" style="width: 30px; height: 30px; overflow: hidden;"></img></el-button>
+                <el-button circle @click="toManager"><img src="/src/assest/favicon.ico" style="width: 30px; height: 30px; overflow: hidden;"></img></el-button>
             </el-col>
 
             <el-col :span="6" :offset="7">
@@ -84,7 +92,7 @@ export default {
 
 nav {
     position: fixed;
-    width: 100vw;
+    width: 100%;
     top: 0;
     margin: 0;
     padding: 5px;

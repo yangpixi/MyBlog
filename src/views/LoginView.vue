@@ -24,7 +24,11 @@ export default {
                 this.statusCode = response.data.status;
                 if(this.statusCode === 200) {
                     this.isLogin = response.data.success;
-                    ElMessage.success("登录成功!")
+                    ElMessage({
+                        message: "登录成功!",
+                        duration: 1000,
+                        type: 'success'
+                    });
                     this.$router.push('/');
                 }else {
                     alert('登录失败，请检查用户名或密码。')
