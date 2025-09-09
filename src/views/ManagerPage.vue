@@ -6,7 +6,7 @@ import { ElMessage } from 'element-plus';
 export default {
     data() {
         return {
-            value: '',
+            isLogin: false,
         }
     },
     methods: {
@@ -28,7 +28,17 @@ export default {
         }
     },
     mounted() {
-        checkIsLogin();
+        checkIsLogin().then(value => {
+            this.isLogin = value;
+            if(this.isLogin === false) {
+                ElMessage({
+                    message: "请登录",
+                    type: 'warning',
+                    duration: 1500,
+                });
+                this.$router.push('/');
+            }
+        });
     }
 }
 </script>

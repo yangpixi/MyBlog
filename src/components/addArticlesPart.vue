@@ -13,8 +13,14 @@ export default {
     methods: {
         async updateArticle(value, render) {
             try {
-                const res = await axios.post('/', {
+                const res = await axios.post('/api/articles/update', {
+                    title: this.title,
                     content: value,            
+                })
+                ElMessage({
+                    message: '保存成功',
+                    type: 'success',
+                    duration: 1500,
                 })
             } catch(err) {
                 ElMessage.warning('发生错误');
@@ -27,6 +33,7 @@ export default {
                     content: this.content_md,
                 })
                 ElMessage.success('上传成功');
+                this.dialogVisible = false;
             } catch(err) {
                 ElMessage({
                     message: err,
