@@ -5,9 +5,9 @@ import { ElMessage } from 'element-plus';
 export default {
     data() {
         return {
-            content_md: '',
+            content_md: localStorage.getItem('currentArticleContent'),
             dialogVisible: false,
-            title: '',
+            title: localStorage.getItem('currentArticleTitle'),
         }
     },
     methods: {
@@ -16,12 +16,12 @@ export default {
                 const res = await axios.post('/api/articles/update', {
                     title: this.title,
                     content: value,            
-                })
+                });
                 ElMessage({
                     message: '保存成功',
                     type: 'success',
                     duration: 1500,
-                })
+                });
             } catch(err) {
                 ElMessage.warning('发生错误');
             }
@@ -51,6 +51,7 @@ export default {
 </script>
 
 <template>
+    <h3 style="font-size: 1.5rem;">{{ title }}</h3>
     <div class="editor">
         <mavon-editor v-model="content_md" @save="updateArticle"></mavon-editor>
     </div>

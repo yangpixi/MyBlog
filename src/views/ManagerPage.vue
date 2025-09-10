@@ -25,7 +25,7 @@ export default {
         },
         doBack() {
             this.$router.push('/')
-        }
+        },
     },
     mounted() {
         checkIsLogin().then(value => {
@@ -55,7 +55,7 @@ export default {
                 </el-header>
 
                 <el-container>
-                    <el-aside>
+                    <el-aside width="20vw">
                         <el-menu style="height: 100vh;" :router="true">
                             <el-sub-menu index="1">
                                 <template #title>
@@ -73,7 +73,7 @@ export default {
                                     <span>文章管理</span>
                                 </template>
                                 <el-menu-item index="2-1" route="/manager/allArticles">所有文章</el-menu-item>
-                                <el-menu-item index="2-2" route="/manager/addArticles">新增文章</el-menu-item>
+                                <el-menu-item index="2-2" route="/manager/addArticles">编辑文章</el-menu-item>
                             </el-sub-menu>
                         </el-menu>
                     </el-aside>
