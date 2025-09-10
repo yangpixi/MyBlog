@@ -1,18 +1,14 @@
-<script>
-import axios from 'axios';
-import { ElMessage } from 'element-plus';
+<script setup>
+    import axios from 'axios';
+    import { ElMessage } from 'element-plus';
+    import { ref } from 'vue';
 
-export default {
-    data() {
-        return {
-            content_md: localStorage.getItem('currentArticleContent'),
-            dialogVisible: false,
-            title: localStorage.getItem('currentArticleTitle'),
-        }
-    },
-    methods: {
-        async updateArticle(value, render) {
-            try {
+    const content_md = ref(localStorage.getItem('currentArticleContent'));
+    const dialogVisible = ref(false);
+    const title = ref(localStorage.getItem('currentArticleTitle'));
+
+    const updateArticle = async () => {
+        try {
                 const res = await axios.post('/api/articles/update', {
                     title: this.title,
                     content: value,            
@@ -25,8 +21,9 @@ export default {
             } catch(err) {
                 ElMessage.warning('发生错误');
             }
-        },
-        async pushArticle() {
+    };
+
+    const pushArticle = async () => {
             try {
                 const res = await axios.post('/api/articles/create', {
                     title: this.title,
@@ -41,13 +38,13 @@ export default {
                     duration: 1500,
                 });
             }
-        },
-        cancle() {
-            this.dialogVisible = false;
-            this.title = '';
-        }
+    };
+
+    const cancle = () => {
+        this.dialogVisible = false;
+        this.title = '';
     }
-}
+
 </script>
 
 <template>
