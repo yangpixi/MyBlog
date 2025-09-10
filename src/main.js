@@ -8,6 +8,7 @@ import ElementPlus from 'element-plus'
 import nav from '@/components/navigation.vue'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import { createPinia } from 'pinia'
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://localhost:8080'
@@ -19,6 +20,7 @@ app.use(ElementPlus, {
 })
 app.use(mavonEditor)
 app.use(router)
+app.use(createPinia)
 
 app.component('Navigation', nav)
 
