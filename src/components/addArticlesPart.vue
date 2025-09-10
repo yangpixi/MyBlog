@@ -6,21 +6,21 @@
 
     const articleStore = useArticleStore();
 
-    const content_md = articleStore.currentArticle.content === null ? '' : articleStore.currentArticle.content;
+    const content_md = ref(articleStore.currentArticle.content === null ? '' : articleStore.currentArticle.content);
     const dialogVisible = ref(false);
-    const title = articleStore.currentArticle.title === null ? '' : articleStore.currentArticle.title;
+    const title = ref(articleStore.currentArticle.title === null ? '' : articleStore.currentArticle.title);
 
     const updateArticle = async () => {
         try {
-                const res = await axios.post('/api/articles/update', {
-                    title: this.title,
-                    content: value,            
-                });
-                ElMessage({
-                    message: '保存成功',
-                    type: 'success',
-                    duration: 1500,
-                });
+            const res = await axios.post('/api/articles/update', {
+                title: title.value,
+                content: content_md.value,            
+            });
+            ElMessage({
+                message: '保存成功',
+                type: 'success',
+                duration: 1500,
+            });
             } catch(err) {
                 ElMessage.warning('发生错误');
             }
@@ -29,11 +29,20 @@
     const pushArticle = async () => {
             try {
                 const res = await axios.post('/api/articles/create', {
-                    title: this.title,
-                    content: this.content_md,
+                    title: title.value,
+                    content: content_md.value,
                 })
-                ElMessage.success('上传成功');
-                this.dialogVisible = false;
+                if(res.data.success === 'true') {
+                    ElMessage.success('上传成功');
+                    dialogVisible.value = false;
+                } else {
+                    ElMessage({
+                        message: '请勿重复上传',
+                        type: 'warning',
+                        duration: 1500,
+                    });
+                    dialogVisible.value = false;
+                }
             } catch(err) {
                 ElMessage({
                     message: err,
@@ -44,8 +53,8 @@
     };
 
     const cancle = () => {
-        this.dialogVisible = false;
-        this.title = '';
+        dialogVisible.value = false;
+        title.value === null ? articleStore.currentArticle.title : '';
     }
 
 </script>

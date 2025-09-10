@@ -1,25 +1,10 @@
 <script setup>
 import router from '@/router';
 import { useArticleStore } from '@/store/articleStore';
-import axios from 'axios';
 import { ElMessage } from 'element-plus';
 import { onMounted, ref } from 'vue';
 
 const articleStore = useArticleStore();
-const articles = ref([]);
-
-const getAllArticles = async () => {
-    try {
-        const res = await axios.get('/api/articles/getAll');
-        articles.value = res.data.message;
-        } catch(err) {
-            ElMessage({
-                message: err,
-                type: "error",
-                duration: 1500,
-            })
-        }
-}
 
 const toEditor = (article) => {
     articleStore.currentArticle = article;
@@ -27,14 +12,14 @@ const toEditor = (article) => {
 }
 
 onMounted(async () => {
-    getAllArticles();
+    articleStore.getAllArticles();
 })
 
 </script>
 
 <template>
     <div class="container">
-        <div class="article_box" v-for="article in articles" @click="toEditor(article)">
+        <div class="article_box" v-for="article in articleStore.allArticles" @click="toEditor(article)">
             <h4 style="margin: 10px; font-size: 1rem;" class="title">#{{ article.title }}</h4>
             <div class="content" style="
             margin-left: 10px; 

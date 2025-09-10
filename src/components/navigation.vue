@@ -88,11 +88,13 @@ export default {
 <style scoped>
 * {
     font-size: 10px;
+    box-sizing: border-box;
 }
 
 nav {
     position: fixed;
-    width: 100%;
+    right: 0;
+    left: 0;
     top: 0;
     margin: 0;
     padding: 5px;

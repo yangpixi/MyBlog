@@ -4,9 +4,15 @@ import { RouterView } from 'vue-router';
 </script>
 
 <template>
-    <RouterView />
+    <div class="mainView">
+        <RouterView />
+    </div>
 </template>
 
-<style scoped>
-
+<style>
+body {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
 </style>
