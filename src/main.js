@@ -20,7 +20,7 @@ app.use(ElementPlus, {
 })
 app.use(mavonEditor)
 app.use(router)
-app.use(createPinia)
+app.use(createPinia())
 
 app.component('Navigation', nav)
 

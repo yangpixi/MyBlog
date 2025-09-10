@@ -1,11 +1,14 @@
 <script setup>
+    import { useArticleStore } from '@/store/articleStore';
     import axios from 'axios';
     import { ElMessage } from 'element-plus';
     import { ref } from 'vue';
 
-    const content_md = ref(localStorage.getItem('currentArticleContent'));
+    const articleStore = useArticleStore();
+
+    const content_md = articleStore.currentArticle.content === null ? '' : articleStore.currentArticle.content;
     const dialogVisible = ref(false);
-    const title = ref(localStorage.getItem('currentArticleTitle'));
+    const title = articleStore.currentArticle.title === null ? '' : articleStore.currentArticle.title;
 
     const updateArticle = async () => {
         try {

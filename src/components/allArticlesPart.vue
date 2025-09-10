@@ -1,37 +1,35 @@
-<script>
+<script setup>
+import router from '@/router';
+import { useArticleStore } from '@/store/articleStore';
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
-import { pushScopeId } from 'vue';
+import { onMounted, ref } from 'vue';
 
-export default {
-    data() {
-        return {
-            articles: '',
+const articleStore = useArticleStore();
+const articles = ref([]);
+
+const getAllArticles = async () => {
+    try {
+        const res = await axios.get('/api/articles/getAll');
+        articles.value = res.data.message;
+        } catch(err) {
+            ElMessage({
+                message: err,
+                type: "error",
+                duration: 1500,
+            })
         }
-    },
-    methods: {
-       async getAllArticles() {
-            try {
-                const res = await axios.get('/api/articles/getAll');
-                this.articles = res.data.message;
-            } catch(err) {
-                ElMessage({
-                    message: err,
-                    type: "error",
-                    duration: 1500,
-                })
-            }
-        },
-        toEditor(article) {
-            localStorage.setItem('currentArticleContent', article.content);
-            localStorage.setItem('currentArticleTitle', article.title);
-            this.$router.push('/manager/addArticles')
-        }
-    },
-    mounted() {
-        this.getAllArticles();
-    }
 }
+
+const toEditor = (article) => {
+    articleStore.currentArticle = article;
+    router.push('/manager/addArticles');
+}
+
+onMounted(async () => {
+    getAllArticles();
+})
+
 </script>
 
 <template>
