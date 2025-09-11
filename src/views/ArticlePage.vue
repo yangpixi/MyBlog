@@ -15,6 +15,7 @@ onMounted(() => {
     <Navigation></Navigation>
     <div class="body">
         <div class="container">
+            <div class="background"></div>
             <div class="content" style="margin-bottom: 10vh;">
                 <div class="all">
                     <p style="color: black; margin-top: 15vh; margin-left: 20vw; font-size: 2.5rem; text-shadow: 0 1px 1px black;">全部文章</p>
@@ -46,29 +47,14 @@ onMounted(() => {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
-.container {
+.background {
     background-image: url('/src/assest/article_background.jpg');
-    background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-size: cover;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-}
-
-.container::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    filter: blur(5px);
-    background: inherit;
+    position: fixed;
     z-index: -1;
+    inset: 0;
+    filter: blur(10px);
     transform: scale(1.1);
 }
 
