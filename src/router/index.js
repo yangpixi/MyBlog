@@ -40,9 +40,14 @@ const router = createRouter({
       ]
     },
     {
-      path: '/article',
-      name: 'article',
+      path: '/articles',
+      name: 'allarticle',
       component: () => import('@/views/ArticlePage.vue')
+    },
+    {
+      path: '/articles/:title',
+      name: 'article',
+      component: () => import('@/components/articlePart.vue')
     }
   ],
 })

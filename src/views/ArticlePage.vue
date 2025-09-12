@@ -2,8 +2,16 @@
 import Navigation from '@/components/navigation.vue';
 import { useArticleStore } from '@/store/articleStore';
 import { onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const articleStore = useArticleStore();
+
+const toArticle = (article) => {
+    articleStore.currentArticle = article;
+    router.push('/articles/' + article.title);
+} 
 
 onMounted(() => {
     articleStore.getAllArticles();
@@ -21,7 +29,7 @@ onMounted(() => {
                     <p style="color: black; margin-top: 15vh; margin-left: 20vw; font-size: 2.5rem; text-shadow: 0 1px 1px black;">全部文章</p>
                 </div>
                 <div class="articles">
-                    <div class="box" v-for="article in articleStore.allArticles" @click="">
+                    <div class="box" v-for="article in articleStore.allArticles" @click="toArticle(article)">
                         <h3 class="title" style="font-size: 1.5rem; margin-top: 2vh; margin-left: 2vw;">{{ article.title }}</h3>
                         <div class="para" style="font-size: 0.8rem;">
                             {{ article.content }}

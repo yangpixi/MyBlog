@@ -59,7 +59,7 @@ export default {
                         <RouterLink to="/">首页</RouterLink>
                     </li>
                     <li>
-                        <RouterLink to="/article">文章</RouterLink>
+                        <RouterLink to="/articles">文章</RouterLink>
                     </li>
                     <li>
                         <a href="123">记录</a>

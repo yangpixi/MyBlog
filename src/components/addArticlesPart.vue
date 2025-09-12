@@ -32,7 +32,7 @@
                     title: title.value,
                     content: content_md.value,
                 })
-                if(res.data.success === 'true') {
+                if(res.data.success === true) {
                     ElMessage.success('上传成功');
                     dialogVisible.value = false;
                 } else {
