@@ -10,17 +10,19 @@ import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import { createPinia } from 'pinia'
 
+
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = 'http://localhost:8080'
 
 const app = createApp(App)
+const pinia = createPinia()
 
 app.use(ElementPlus, {
     zIndex: 3000,
 })
 app.use(mavonEditor)
 app.use(router)
-app.use(createPinia())
+app.use(pinia)
 
 app.component('Navigation', nav)
 

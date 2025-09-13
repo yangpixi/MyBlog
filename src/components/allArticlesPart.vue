@@ -1,7 +1,6 @@
 <script setup>
 import router from '@/router';
 import { useArticleStore } from '@/store/articleStore';
-import { ElMessage } from 'element-plus';
 import { onMounted, ref } from 'vue';
 
 const articleStore = useArticleStore();

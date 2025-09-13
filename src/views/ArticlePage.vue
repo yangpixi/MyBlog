@@ -9,6 +9,7 @@ const router = useRouter();
 const articleStore = useArticleStore();
 
 const toArticle = (article) => {
+    sessionStorage.setItem('currentArticle', article.content);
     articleStore.currentArticle = article;
     router.push('/articles/' + article.title);
 } 
