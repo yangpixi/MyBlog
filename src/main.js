@@ -6,6 +6,7 @@ import axios from 'axios'
 import 'element-plus/dist/index.css';
 import ElementPlus from 'element-plus'
 import nav from '@/components/navigation.vue'
+import Toc from './components/Toc.vue'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 import { createPinia } from 'pinia'
@@ -25,6 +26,7 @@ app.use(router)
 app.use(pinia)
 
 app.component('Navigation', nav)
+app.component('Toc', Toc)
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)

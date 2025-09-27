@@ -4,6 +4,7 @@ import axios from 'axios';
 
 
 export const useArticleStore = defineStore('articles', () => {
+    const allTitles = ref([]);
     const allArticles = ref([]);
     const currentArticle = reactive({
         id: null,
@@ -28,5 +29,6 @@ export const useArticleStore = defineStore('articles', () => {
         currentArticle,
         allArticles,
         getAllArticles,
+        allTitles,
     }
 })
