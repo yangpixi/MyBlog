@@ -100,8 +100,8 @@ nav {
     padding: 5px;
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 

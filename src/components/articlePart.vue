@@ -1,7 +1,5 @@
 <script setup>
-import { useArticleStore } from '@/store/articleStore';
-import { nextTick, onMounted, onUnmounted, onUpdated, ref, watchEffect } from 'vue';
-import {marked} from 'marked';
+import {nextTick, onMounted, ref, useTemplateRef} from 'vue';
 import Navigation from './navigation.vue';
 import axios from 'axios';
 import { useRoute} from 'vue-router';
@@ -11,6 +9,10 @@ import Toc from './Toc.vue';
 const route = useRoute();
 const title = ref('');
 const htmlContent = ref('');
+const htmlRef = useTemplateRef("htmlRef");
+const headings = ref([]);
+const activeId = ref('');
+
 
 onMounted(async () => {
     try {
@@ -20,8 +22,23 @@ onMounted(async () => {
     } catch(err) {
         ElMessage.warning(err);
     }
-});
-
+    await nextTick();
+    headings.value = htmlRef.value.querySelectorAll("h2, h3");
+    console.log(headings.value);
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+            activeId.value = entry.target.querySelector('a').id;
+        }
+      })
+    }, {
+        rootMargin: '-25% 0px -75% 0px',
+    });
+    headings.value.forEach(heading => {
+        console.log(heading);
+        observer.observe(heading);
+    })
+  });
 </script>
 
 <template>
@@ -29,24 +46,22 @@ onMounted(async () => {
         <Navigation></Navigation>
         <div class="main">
             <div class="aside">
-                <Toc />
+                <Toc :active-id="activeId"/>
             </div>
             <div class="content">
                 <div class="title" style="text-align: center; padding-top: 150px; padding-bottom: 20px;">
                     <h1>{{ title }}</h1>
                 </div>
-                <div v-html="htmlContent"></div>
+                <div v-html="htmlContent" ref="htmlRef"></div>
             </div>
+        </div>
+        <div class="footer">
+            
         </div>
     </div>
 </template>
 
 <style scoped>
-
-html {
-    
-}
-
 * {
     margin: 0;
     padding: 0;
@@ -91,5 +106,13 @@ html {
     height: 95%;
 }
 
+.content ::v-deep h2 {
+    scroll-margin-top: 50px !important;
+}
+
+.footer {
+    height: 100vh;
+    width: 100vw;
+}
 
 </style>

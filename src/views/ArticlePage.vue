@@ -37,9 +37,6 @@ onMounted(() => {
                         </div>
                     </div>
                 </div>
-                <div class="footer" >
-
-                </div>
             </div>
         </div>
     </div>
@@ -110,7 +107,6 @@ onMounted(() => {
     margin: 5px auto;
     width: 95%;
 }
-
 
 .box:hover {
     transform: translateX(5px);
