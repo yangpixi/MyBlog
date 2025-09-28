@@ -36,6 +36,14 @@ watchEffect(() => {
 </template>
 
 <style scoped>
+
+.container {
+    color: rgba(255, 255, 255, 0.822);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 20px;
+}
+
 ul {
     list-style: none;
 }
@@ -47,19 +55,19 @@ ul li {
 ul li a {
     font-size: 1.0rem;
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.815);
     transition: all 0.3s ease;
     padding: 5px;
     border-radius: 10px;
 }
 
 ul li a:hover {
-    background-color: rgba(0, 0, 0, 0.07);
-    color: black;
+    background-color: rgba(148, 147, 147, 0.07);
+    color: rgb(156, 155, 155);
 }
 
 .toc.active {
-    color: black;
+    color: #0081CF;
 }
 
 </style>

@@ -44,19 +44,21 @@ onMounted(async () => {
 <template>
     <div class="page">
         <Navigation></Navigation>
+        <div class="background"></div>
         <div class="main">
             <div class="aside">
                 <Toc :active-id="activeId"/>
             </div>
             <div class="content">
-                <div class="title" style="text-align: center; padding-top: 150px; padding-bottom: 20px;">
+                <div class="title" style="text-align: center; padding-top: 10px; padding-bottom: 20px;">
                     <h1>{{ title }}</h1>
                 </div>
                 <div v-html="htmlContent" ref="htmlRef"></div>
             </div>
         </div>
+        <hr style="border: 1px solid black; width: 85%; margin: 20px auto;"></hr>
         <div class="footer">
-            
+            <h2>评论区<span style="font-size: 0.8rem;">赶快来留下你的评论吧</span></h2>
         </div>
     </div>
 </template>
@@ -66,6 +68,17 @@ onMounted(async () => {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.background {
+    background-image: url('/src/assest/articleReading_background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+    filter: blur(10px);
+    transform: scale(1.1);
 }
 
 .main {
@@ -80,7 +93,7 @@ onMounted(async () => {
     max-height: 40vh;
     width: 30%;
     position: sticky;
-    top: 150px;
+    top: 130px;
     display: flex;
     flex-direction: column;
 }
@@ -89,30 +102,32 @@ onMounted(async () => {
     height: 100%;
     width: 100%;
     margin-right: 0vw;
+    color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin-top: 15vh;
+    border-radius: 20px;
 }
 
-.content ::v-deep p {
+.content:deep(p) {
     font-size: 1rem;
 }
 
-.content ::v-deep a {
-    color: black;
+.content:deep(a) {
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     position: relative;
 }
 
-.content ::v-deep a:hover::after {
+.content:deep(a:hover::after) {
     content: '  #';
     height: 95%;
 }
 
-.content ::v-deep h2 {
-    scroll-margin-top: 50px !important;
-}
-
 .footer {
-    height: 100vh;
-    width: 100vw;
+    height: 50vh;
+    width: 85%;
+    margin: 0 auto;
 }
 
 </style>
